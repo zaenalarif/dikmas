@@ -4,18 +4,13 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset("plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
 @endsection
 
 @section('content')
 
 <div class="section-header">
-    <h1>Home</h1>
-    <div class="section-header-breadcrumb">
-      <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-      <div class="breadcrumb-item"><a href="#">Modules</a></div>
-      <div class="breadcrumb-item">DataTables</div>
-    </div>
   </div>
 
   <div class="section-body">
@@ -46,57 +41,75 @@
 
     <div class="row">
       <div class="col-12">
+
+
         <div class="card">
           <div class="card-header">
-            <h4>Daftar Peserta</h4>
+            <h3 class="card-title">DataTable with default features</h3>
           </div>
+          <!-- /.card-header -->
           <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-striped" id="table-1">
-                <thead>
-                  <tr>
-                    <th class="text-center">
-                      #
-                    </th>
-                    <th>NISN</th>
-                    <th>Nama</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Tempat lahir</th>
-                    <th>tanggal lahir</th>
-                    <th>Orang tua</th>
-                    <th>Program</th>
-                    <th>Mapel Pilihan</th>
-                    <th>Option</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($siswas as $siswa)
-                    <tr>
-                      <td>{{ $loop->index }}</td>
-                      <td>{{ $siswa->nisn }}</td>
-                      <td>{{ $siswa->nama }}</td>
-                      <td>{{ $siswa->jenis_kelamin }}</td>
-                      <td>{{ $siswa->tempat_lahir }}</td>
-                      <td>{{ date("d-M-Y", strtotime($siswa->tanggal_lahir)) }}</td>
-                      <td>{{ $siswa->nama_ortu}}</td>
-                      <td>{{ $siswa->program }}</td>
-                      <td>{{ $siswa->mapel_pilihan }}</td>
-                      <td>
-                        <a href="{{ url("/siswa/$siswa->id/edit") }}" class="btn btn-sm btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                        <form action="{{ url("siswa/$siswa->id")}}" method="post" style="display: inline">
-                          <button type="submit" class="btn btn-sm btn-danger btn-action" >
-                            <i class="fas fa-trash"></i>
-                          </button>
-                          @method("DELETE")
-                          @csrf
-                        </form>
-                      </td>
-                    </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th class="text-center">
+                  #
+                </th>
+                <th>NISN</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>Tempat lahir</th>
+                <th>tanggal lahir</th>
+                <th>Orang tua</th>
+                <th>Program</th>
+                <th>Mapel Pilihan</th>
+                <th>Option</th>
+              </tr>
+              </thead>
+              <tbody>
+                @foreach ($siswas as $siswa)
+                <tr>
+                  <td>{{ $loop->index }}</td>
+                  <td>{{ $siswa->nisn }}</td>
+                  <td>{{ $siswa->nama }}</td>
+                  <td>{{ $siswa->jenis_kelamin }}</td>
+                  <td>{{ $siswa->tempat_lahir }}</td>
+                  <td>{{ date("d-M-Y", strtotime($siswa->tanggal_lahir)) }}</td>
+                  <td>{{ $siswa->nama_ortu}}</td>
+                  <td>{{ $siswa->program }}</td>
+                  <td>{{ $siswa->mapel_pilihan }}</td>
+                  <td>
+                    <a href="{{ url("/siswa/$siswa->id/edit") }}" class="btn btn-sm btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="{{ url("siswa/$siswa->id")}}" method="post" style="display: inline">
+                      <button type="submit" class="btn btn-sm btn-danger btn-action" >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                      @method("DELETE")
+                      @csrf
+                    </form>
+                  </td>
+                </tr>
+              @endforeach
+              </tbody>
+              <tfoot>
+              <tr>
+                <th class="text-center">
+                  #
+                </th>
+                <th>NISN</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>Tempat lahir</th>
+                <th>tanggal lahir</th>
+                <th>Orang tua</th>
+                <th>Program</th>
+                <th>Mapel Pilihan</th>
+                <th>Option</th>
+              </tr>
+              </tfoot>
+            </table>
           </div>
+          <!-- /.card-body -->
         </div>
       </div>
     </div>
@@ -105,15 +118,13 @@
 @endsection
 
 @section('script')
-    <!-- Page Specific JS File -->
-  <script src="{{ asset('assets/js/page/modules-datatables.js')}}"></script>
-
-  <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <!-- DataTables -->
+  <script src="{{ asset("plugins/datatables/jquery.dataTables.js")}}"></script>
+  <script src="{{ asset("plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 
   <script>
-    $(document).ready( function () {
-        $('#table-1').DataTable();
-    } );
+    $(function () {
+    $('#example1').DataTable();
+  });
   </script>
-
 @endsection

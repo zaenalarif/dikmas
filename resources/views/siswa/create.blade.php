@@ -5,17 +5,11 @@
 @endsection
 
 @section('css')
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ asset("plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
 @endsection
 
 @section('content')
 <div class="section-header">
-    <h1>Tambah Peserta</h1>
-    <div class="section-header-breadcrumb">
-      <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-      <div class="breadcrumb-item"><a href="#">Forms</a></div>
-      <div class="breadcrumb-item">Advanced Forms</div>
-    </div>
   </div>
 
   <div class="section-body">
@@ -66,11 +60,12 @@
             
             <div class="form-group">
               <label>Tempat lahir</label>
-              <select class="js-example-basic-single form-control" name="tempat_lahir">
-                <option value="kudus">Kudus</option>
-                <option value="jepara">Jepara</option>
-                <option value="pati">Pati</option>
-              </select>
+              <input type="text" class="form-control {{ $errors->has('tempat_lahir') ? 'is-invalid' : NULL }}" name="tempat_lahir" value="{{ old("tempat_lahir") }}">
+              @if ($errors->has("tempat_lahir"))
+                <div class="invalid-feedback">
+                  Tempat lahir harus di isi
+                </div>
+              @endif
             </div>
 
             <div class="form-group">
@@ -120,12 +115,7 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('assets/js/page/forms-advanced-forms.js')}}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2();
-    });
-    </script>
+    <!-- DataTables -->
+    <script src="{{ asset("plugins/datatables/jquery.dataTables.js")}}"></script>
+    <script src="{{ asset("plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 @endsection
