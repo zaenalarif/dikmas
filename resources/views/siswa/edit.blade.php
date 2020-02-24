@@ -62,11 +62,7 @@
             
             <div class="form-group">
               <label>Tempat lahir</label>
-              <select class="js-example-basic-single form-control" name="tempat_lahir">
-                <option value="kudus">Kudus</option>
-                <option value="jepara">Jepara</option>
-                <option value="pati">Pati</option>
-              </select>
+              <input type="text" name="tempat_lahir" class="form-control" value="{{ old("tempat_lahir") ? old("tempat_lahir") : $siswa->tempat_lahir}}">
             </div>
 
             <div class="form-group">

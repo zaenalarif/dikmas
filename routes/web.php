@@ -15,14 +15,21 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get("/",            "SiswaController@index");
 
-Route::get("/siswa",            "SiswaController@index");
-Route::get("/siswa/create",     "SiswaController@create");
-Route::post("/siswa/create",     "SiswaController@store");
-Route::get("/siswa/{id}/edit",  "SiswaController@edit");
-Route::put("/siswa/{id}",       "SiswaController@update");
-Route::delete("/siswa/{id}",    "SiswaController@delete");
+Route::group(["middleware" => ["auth"]], function(){
+    Route::get("/",                 "SiswaController@index");
+    Route::get("/siswa",            "SiswaController@index");
+    Route::get("/siswa/create",     "SiswaController@create");
+    Route::post("/siswa/create",     "SiswaController@store");
+    Route::get("/siswa/{id}/edit",  "SiswaController@edit");
+    Route::put("/siswa/{id}",       "SiswaController@update");
+    Route::delete("/siswa/{id}",    "SiswaController@delete");
+    
+    Route::post("/siswa/import",    "SiswaController@import");
+    Route::get("/siswa/cetak",     "SiswaController@cetak");
+});
+Auth::routes();
 
-Route::post("/siswa/import",    "SiswaController@import");
-Route::get("/siswa/cetak",     "SiswaController@cetak");
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes(['register' => false]);

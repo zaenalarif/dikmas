@@ -10,17 +10,14 @@
 
 @section('content')
 
-<div class="section-header">
-  </div>
-
-  <div class="section-body">
+  <div class="content">
 
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card">
           <div class="card-body">
             <div class="row center">
-              <div class="col">
+              <div class="t col">
                 <form action="{{ url("/siswa/import") }}" method="post" enctype="multipart/form-data">
                   <input type="file" name="file" id="">
                   <button type="submit">Import</button>
@@ -40,31 +37,28 @@
     </div>
 
     <div class="row">
-      <div class="col-12">
-
-
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
+            <h3 class="card-title">Daftar Siswa</h3>
           </div>
-          <!-- /.card-header -->
           <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="example1" class="table table-bordered table-striped" style="width:100%">
               <thead>
-              <tr>
-                <th class="text-center">
-                  #
-                </th>
-                <th>NISN</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>Tempat lahir</th>
-                <th>tanggal lahir</th>
-                <th>Orang tua</th>
-                <th>Program</th>
-                <th>Mapel Pilihan</th>
-                <th>Option</th>
-              </tr>
+                <tr>
+                  <th class="text-center">
+                    #
+                  </th>
+                  <th>NISN</th>
+                  <th>Nama</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Tempat lahir</th>
+                  <th>tanggal lahir</th>
+                  <th>Orang tua</th>
+                  <th>Program</th>
+                  <th>Mapel Pilihan</th>
+                  <th>Option</th>
+                </tr>
               </thead>
               <tbody>
                 @foreach ($siswas as $siswa)
@@ -91,25 +85,8 @@
                 </tr>
               @endforeach
               </tbody>
-              <tfoot>
-              <tr>
-                <th class="text-center">
-                  #
-                </th>
-                <th>NISN</th>
-                <th>Nama</th>
-                <th>Jenis Kelamin</th>
-                <th>Tempat lahir</th>
-                <th>tanggal lahir</th>
-                <th>Orang tua</th>
-                <th>Program</th>
-                <th>Mapel Pilihan</th>
-                <th>Option</th>
-              </tr>
-              </tfoot>
             </table>
           </div>
-          <!-- /.card-body -->
         </div>
       </div>
     </div>
