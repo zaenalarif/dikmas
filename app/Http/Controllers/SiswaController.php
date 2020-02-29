@@ -30,18 +30,21 @@ class SiswaController extends Controller
             "jenis_kelamin" => "required",
             "tempat_lahir"  => "required",
             "tanggal_lahir" => "required",
+            "alamat"        => "required",
             "nama_ortu"     => "required",
         ]);
 
         DB::table("siswas")->insert([
-            "nisn"          => $request->nisn,
-            "nama"          => $request->nama,
-            "jenis_kelamin" => $request->jenis_kelamin,
-            "tempat_lahir"  => $request->tempat_lahir,
-            "tanggal_lahir" => $request->tanggal_lahir,
-            "nama_ortu"     => $request->nama_ortu,
-            "program"       => $request->program,
-            "mapel_pilihan"  => $request->mapel_pilihan
+            "nisn"              => $request->nisn,
+            "nama"              => $request->nama,
+            "jenis_kelamin"     => $request->jenis_kelamin,
+            "tempat_lahir"      => $request->tempat_lahir,
+            "tanggal_lahir"     => $request->tanggal_lahir,
+            "alamat"            => $request->alamat,
+            "nama_ortu"         => $request->nama_ortu,
+            "program"           => $request->program,
+            "satuan_pendidikan" => $request->satuan_pedidikan,
+            "mapel_pilihan"     => $request->mapel_pilihan
         ]);
 
         alert()->success('Siswa berhasil ditambahkan.', 'Berhasil');
@@ -69,14 +72,16 @@ class SiswaController extends Controller
         $siswa = DB::table('siswas')->where('id', $id);        
 
         $siswa->update([
-            "nisn"          => $request->nisn,
-            "nama"          => $request->nama,
-            "jenis_kelamin" => $request->jenis_kelamin,
-            "tempat_lahir"  => $request->tempat_lahir,
-            "tanggal_lahir" => $request->tanggal_lahir,
-            "nama_ortu"     => $request->nama_ortu,
-            "program"       => $request->program,
-            "mapel_pilihan"  => $request->mapel_pilihan
+            "nisn"              => $request->nisn,
+            "nama"              => $request->nama,
+            "jenis_kelamin"     => $request->jenis_kelamin,
+            "tempat_lahir"      => $request->tempat_lahir,
+            "tanggal_lahir"     => $request->tanggal_lahir,
+            "alamat"            => $request->alamat,
+            "nama_ortu"         => $request->nama_ortu,
+            "program"           => $request->program,
+            "satuan_pendidikan" => $request->satuan_pedidikan,
+            "mapel_pilihan"     => $request->mapel_pilihan
         ]);
 
         alert()->success('Siswa berhasil diubah.', 'Berhasil');

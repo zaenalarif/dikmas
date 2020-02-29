@@ -77,6 +77,16 @@
             </div>
 
             <div class="form-group">
+              <label>Tanggal lahir</label>
+              <input type="text" class="form-control {{ $errors->has("alamat") ? 'is-invalid' : NULL }}" name="alamat" value="{{ old("alamat") }}">
+              @if ($errors->has("alamat"))
+                <div class="invalid-feedback">
+                  Alamat lahir harus di isi
+                </div>
+              @endif
+            </div>
+
+            <div class="form-group">
               <label>Nama orang tua</label>
               <input type="text" class="form-control {{ $errors->has("nama_ortu") ? 'is-invalid' : NULL }} " name="nama_ortu" value="{{ old('nama_ortu') }}">
               @if ($errors->has("nama_ortu"))
@@ -89,6 +99,12 @@
             <div class="form-group">
               <label>Program</label>
               <input type="text" class="form-control" name="program" value="{{ old('program') ? old('program') : 'IPS' }}" >
+            </div>
+
+
+            <div class="form-group">
+              <label>Satuan Pendidikan</label>
+              <input type="text" class="form-control" name="satuan_pendidikan" value="{{ old('satuan_pendidikan') }}" >
             </div>
 
             <div class="form-group">
