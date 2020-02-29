@@ -77,7 +77,7 @@
             </div>
 
             <div class="form-group">
-              <label>Tanggal lahir</label>
+              <label>Alamat</label>
               <input type="text" class="form-control {{ $errors->has("alamat") ? 'is-invalid' : NULL }}" name="alamat" value="{{ old("alamat") }}">
               @if ($errors->has("alamat"))
                 <div class="invalid-feedback">

@@ -43,7 +43,7 @@ class SiswaController extends Controller
             "alamat"            => $request->alamat,
             "nama_ortu"         => $request->nama_ortu,
             "program"           => $request->program,
-            "satuan_pendidikan" => $request->satuan_pedidikan,
+            "satuan_pendidikan" => $request->satuan_pendidikan,
             "mapel_pilihan"     => $request->mapel_pilihan
         ]);
 
@@ -80,7 +80,7 @@ class SiswaController extends Controller
             "alamat"            => $request->alamat,
             "nama_ortu"         => $request->nama_ortu,
             "program"           => $request->program,
-            "satuan_pendidikan" => $request->satuan_pedidikan,
+            "satuan_pendidikan" => $request->satuan_pendidikan,
             "mapel_pilihan"     => $request->mapel_pilihan
         ]);
 
