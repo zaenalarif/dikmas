@@ -10,6 +10,7 @@
 
 @section('content')
 
+
   <div class="content">
 
     <div class="row">
@@ -17,18 +18,11 @@
         <div class="card">
           <div class="card-body">
             <div class="row center">
-              <div class="t col">
-                <form action="{{ url("/siswa/import") }}" method="post" enctype="multipart/form-data">
-                  <input type="file" name="file" id="">
-                  <button type="submit">Import</button>
-                  @csrf
-                </form>
-              </div>
               <div class="col">
                 <a href="{{ url('siswa/cetak') }}" class="btn btn-secondary" >Download</a>  
               </div>
               <div class="col">
-                <a href="{{url('siswa/create')}}" class="btn btn-info">Tambah</a>
+                <a href="{{url('siswa/create')}}" class="btn btn-primary">Tambah</a>
               </div>
             </div>
           </div>
@@ -54,8 +48,10 @@
                   <th>Jenis Kelamin</th>
                   <th>Tempat lahir</th>
                   <th>tanggal lahir</th>
+                  <th>Alamat</th>
                   <th>Orang tua</th>
                   <th>Program</th>
+                  <th>Satuan Pendidikan</th>
                   <th>Mapel Pilihan</th>
                   <th>Option</th>
                 </tr>
@@ -68,9 +64,11 @@
                   <td>{{ $siswa->nama }}</td>
                   <td>{{ $siswa->jenis_kelamin }}</td>
                   <td>{{ $siswa->tempat_lahir }}</td>
+                  <td>{{ $siswa->alamat }}</td>
                   <td>{{ date("d-M-Y", strtotime($siswa->tanggal_lahir)) }}</td>
                   <td>{{ $siswa->nama_ortu}}</td>
                   <td>{{ $siswa->program }}</td>
+                  <td>{{ $siswa->satuan_pendidikan }}</td>
                   <td>{{ $siswa->mapel_pilihan }}</td>
                   <td>
                     <a href="{{ url("/siswa/$siswa->id/edit") }}" class="btn btn-sm btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>

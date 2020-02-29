@@ -20,8 +20,10 @@ class CreateSiswasTable extends Migration
             $table->string('jenis_kelamin');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
+            $table->string('alamat')->nullable();
             $table->string('nama_ortu');
             $table->string('program')->nullable();
+            $table->string('satuan_pendidikan');
             $table->string('mapel_pilihan')->nullable();
             $table->timestamps();
         });
