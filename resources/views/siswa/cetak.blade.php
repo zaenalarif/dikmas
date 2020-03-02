@@ -20,15 +20,17 @@
     <table style="width: 100%">
         <thead>
             <tr>
-            <th class="text-center">No</th>
-            <th class="text-center" >NISN</th>
-            <th class="text-center" >Nama</th>
-            <th class="text-center" >Jenis Kelamin</th>
-            <th class="text-center" >Tempat Lahir</th>
-            <th class="text-center" >Tanggal Lahir</th>
-            <th class="text-center" >Orang Tua</th>
-            <th class="text-center" >Program</th>
-            <th class="text-center" >Mapel Pilihan</th>
+                <th class="text-center">No</th>
+                <th class="text-center" >NISN</th>
+                <th class="text-center" >Nama</th>
+                <th class="text-center" >Jenis Kelamin</th>
+                <th class="text-center" >Tempat Lahir</th>
+                <th class="text-center" >Alamat</th>
+                <th class="text-center" >Tanggal Lahir</th>
+                <th class="text-center" >Orang Tua</th>
+                <th class="text-center" >Program</th>
+                <th class="text-center" >Satuan Pendidikan</th>
+                <th class="text-center" >Mapel Pilihan</th>
             </tr>
         </thead>
         <tbody>
@@ -39,9 +41,11 @@
                 <td class="text-center">{{ $siswa->nama }}</td>
                 <td class="text-center">{{ $siswa->jenis_kelamin }}</td>
                 <td class="text-center">{{ $siswa->tempat_lahir }}</td>
+                <td class="text-center">{{ $siswa->alamat }}</td>
                 <td class="text-center">{{ date("d-M-Y", strtotime($siswa->tanggal_lahir)) }}</td>
                 <td class="text-center">{{ $siswa->nama_ortu}}</td>
                 <td class="text-center">{{ $siswa->program }}</td>
+                <td class="text-center">{{ $siswa->satuan_pendidikan }}</td>
                 <td class="text-center">{{ $siswa->mapel_pilihan }}</td>
             </tr>
             @endforeach
