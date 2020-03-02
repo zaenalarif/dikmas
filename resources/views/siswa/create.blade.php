@@ -10,18 +10,16 @@
 
 @section('content')
 
-  <div class="content">
-    <div class="row">
-      <div class="col-12 col-md-12 col-lg-12">
-        <div class="card">
-          <div class="card-header">
-            <h4>Data peserta</h4>
-          </div>
-          @if ($errors->any())
-              @foreach( $errors->all() as $error)
-                {{ $error }}
-              @endforeach
-          @endif
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Tambah Siswa</h6>
+        </div>
+        <div class="card-body">
           <form class="card-body" method="POST" action="{{ url('/siswa/create') }}">
             <div class="form-group">
               <label>NISN</label>
@@ -122,6 +120,8 @@
       </div>
     </div>
   </div>
+</div>
+
 @endsection
 
 @section('script')

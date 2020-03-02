@@ -17,16 +17,17 @@ Route::get('/login', function () {
 
 
 Route::group(["middleware" => ["auth"]], function(){
-    Route::get("/",                 "SiswaController@index");
-    Route::get("/siswa",            "SiswaController@index");
-    Route::get("/siswa/create",     "SiswaController@create");
-    Route::post("/siswa/create",     "SiswaController@store");
-    Route::get("/siswa/{id}/edit",  "SiswaController@edit");
-    Route::put("/siswa/{id}",       "SiswaController@update");
-    Route::delete("/siswa/{id}",    "SiswaController@delete");
+    Route::get("/",                     "SiswaController@index");
+    Route::get("/siswa",                "SiswaController@index");
+    Route::get("/siswa/create",         "SiswaController@create");
+    Route::post("/siswa/create",        "SiswaController@store");
+    Route::get("/siswa/{id}/edit",      "SiswaController@edit");
+    Route::put("/siswa/{id}",           "SiswaController@update");
+    Route::delete("/siswa/{id}",        "SiswaController@delete");
     
-    Route::post("/siswa/import",    "SiswaController@import");
-    Route::get("/siswa/cetak",     "SiswaController@cetak");
+    Route::post("/siswa/import",        "SiswaController@import");
+    Route::get("/siswa/view/cetak",     "SiswaController@view_cetak");
+    Route::get("/siswa/cetak",          "SiswaController@cetak");
 });
 Auth::routes();
 

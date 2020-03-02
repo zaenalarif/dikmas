@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+    <h2 style="text-align: center">Data Siswa Non Formal</h2>
     <table style="width: 100%">
         <thead>
             <tr>

@@ -61,7 +61,7 @@ class SiswaController extends Controller
     public function update(Request $request, $id) 
     {
         $request->validate([
-            "nisn"          => "required|unique:siswas",
+            "nisn"          => "required",
             "nama"          => "required",
             "jenis_kelamin" => "required",
             "tempat_lahir"  => "required",
@@ -114,11 +114,17 @@ class SiswaController extends Controller
         return redirect("/siswa")->with("msg", "Data berhasil di import");
     }
 
+    public function view_cetak() 
+    {
+        $siswas = DB::table("siswas")->get();
+        
+        return view("siswa.viewCetak", compact("siswas"));
+    }
 
     public function cetak()
     {
         $siswas = DB::table("siswas")->get();
         $pdf = PDF::loadView('siswa.cetak', compact("siswas"));
-        return $pdf->download('laporan_siswa.pdf');
+        return $pdf->stream('laporan_siswa.pdf');
     }
 }

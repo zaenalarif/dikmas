@@ -1,148 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Pendaftaran siswa</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset("plugins/fontawesome-free/css/all.min.css")}}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="{{ asset("plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")}}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset("plugins/icheck-bootstrap/icheck-bootstrap.min.css")}}">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ asset("plugins/jqvmap/jqvmap.min.css")}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset("dist/css/adminlte.min.css")}}">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset("plugins/overlayScrollbars/css/OverlayScrollbars.min.css")}}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset("plugins/daterangepicker/daterangepicker.css")}}">
-  <!-- summernote -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>@yield('title')</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{{ asset("assets/vendor/fontawesome-free/css/all.min.css")}}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{{ asset("assets/css/sb-admin-2.min.css")}}" rel="stylesheet">
+
   @yield('style')
-  <link rel="stylesheet" href="{{ asset("dist/css/adminlte.min.css")}}">
-  <link rel="stylesheet" href="{{ asset("plugins/summernote/summernote-bs4.css")}}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  
+
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
 
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
+<body id="page-top">
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">     
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset("dist/img/AdminLTELogo.png")}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">DIKMAS</span>
-    </a>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
     <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset("dist/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url("/")}}">
+        <div class="sidebar-brand-icon rotate-n-15">
         </div>
-        <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-        </div>
+        <div class="sidebar-brand-text mx-3">{{ Auth::user()->username }}</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url("/") }}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Home</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url("/siswa/create") }}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Tambah Data</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url("/siswa") }}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Daftar Siswa</span></a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url("/siswa/view/cetak") }}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Cetak</span></a>
+      </li>
+
+      <li class="nav-item">
+        <form action="{{ url("/logout") }}" method="post" class="nav-link">
+          <input type="submit" value="logout" class="btn btn-info btn-block">
+          @csrf
+        </form>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="{{ url("siswa") }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Home
-              </p>
-            </a>
-          </li>
+    </ul>
+    <!-- End of Sidebar -->
 
-          <li class="nav-item mt-5">
-            <a href="{{ url("siswa") }}">
-              <form action="{{ url("/logout") }}" method="post">
-                @csrf
-                <input type="submit" value="Logout" class="btn btn-primary btn-block">
-              </form>
-            </a>
-          </li>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        @yield('content')
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
     </div>
-    <!-- /.sidebar -->
-  </aside>
+    <!-- End of Content Wrapper -->
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-    </div>
-      @yield('content')
-    
   </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; Puji Febriani</strong>
-  </footer>
+  <!-- End of Page Wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
-<!-- jQuery -->
-<script src="{{ asset("plugins/jquery/jquery.min.js")}}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset("plugins/jquery-ui/jquery-ui.min.js")}}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset("plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- overlayScrollbars -->
-@yield('script')
-<script src="{{ asset("plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")}}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset("dist/js/adminlte.js")}}"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ asset("assets/vendor/jquery/jquery.min.js")}}"></script>
+  <script src="{{ asset("assets/vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset("dist/js/demo.js")}}"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="{{ asset("assets/vendor/jquery-easing/jquery.easing.min.js")}}"></script>
 
-  
-</bodyf>
+  <!-- Custom scripts for all pages-->
+  <script src="{{ asset("assets/js/sb-admin-2.min.js")}}"></script>
+
+  @yield('script')
+</body>
+
 </html>
