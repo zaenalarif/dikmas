@@ -96,6 +96,6 @@
 @endsection
 
 @section('script')
-   <script src="{{ asset("assets/vendor/datatables/jquery.dataTables.js")}}"></script>
+  <script src="{{ asset("assets/vendor/datatables/jquery.dataTables.js")}}"></script>
   <script src="{{ asset("assets/js/demo/datatables-demo.js")}}"></script>
 @endsection
