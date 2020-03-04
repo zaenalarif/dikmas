@@ -17,8 +17,7 @@ Route::get('/login', function () {
 
 
 Route::group(["middleware" => ["auth"]], function(){
-    Route::get("/",                     "SiswaController@index");
-    Route::get("/siswa",                "SiswaController@index");
+    Route::get("/",                     "HomeController@index");
     Route::get("/siswa/create",         "SiswaController@create");
     Route::post("/siswa/create",        "SiswaController@store");
     Route::get("/siswa/{id}/edit",      "SiswaController@edit");
@@ -30,7 +29,5 @@ Route::group(["middleware" => ["auth"]], function(){
     Route::get("/siswa/cetak",          "SiswaController@cetak");
 });
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes(['register' => false]);
